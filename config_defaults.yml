@@ -559,6 +559,11 @@ Gemfile:
         condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.1.0')"
       - gem: fast_gettext
         condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.1.0')"
+      # i18n 1.5.2 added a requirement on ruby >= 2.3.0. We pin to
+      # i18n <= 1.5.1 if using ruby <= 2.3.x
+      - gem: i18n
+        version: '<= 1.5.1'
+        condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.3.0')"
       # json_pure 2.0.2 added a requirement on ruby >= 2. We pin to
       # json_pure <= 2.0.1 if using ruby 1.x
       - gem: json_pure
